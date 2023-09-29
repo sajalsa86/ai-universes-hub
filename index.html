@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Universe</title>
+    <!-- Tail Wind Css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome link -->
+    <script src="https://kit.fontawesome.com/81b6252507.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main>
+        <h2 class="text-center text-2xl font-medium my-4">AI Universe Hub</h2>
+        <div id="date-wise" class="flex justify-center hidden">
+            <button id="sort-by-date" class="text-slate-200 bg-red-300 font-medium rounded-lg py-2 px-3 capitalize">sort
+                by date</button>
+        </div>
+        <div id="descending" class="flex justify-center hidden">
+            <button id="descending-btn"
+                class="text-slate-200 bg-red-300 font-medium rounded-lg py-2 px-3 capitalize">Descending</button>
+        </div>
+        <section class="mt-10 mb-12 container mx-auto">
+            <div id="card-container" class="grid grid-cols-3 gap-4"></div>
+        </section>
+    </main>
+    <!-- universe js link -->
+    <script src="js/universe.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+</body>
+
+</html>
