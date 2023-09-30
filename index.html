@@ -14,16 +14,32 @@
 <body>
     <main>
         <h2 class="text-center text-2xl font-medium my-4">AI Universe Hub</h2>
-        <div id="date-wise" class="flex justify-center hidden">
-            <button id="sort-by-date" class="text-slate-200 bg-red-300 font-medium rounded-lg py-2 px-3 capitalize">sort
-                by date</button>
-        </div>
-        <div id="descending" class="flex justify-center hidden">
-            <button id="descending-btn"
-                class="text-slate-200 bg-red-300 font-medium rounded-lg py-2 px-3 capitalize">Descending</button>
-        </div>
+        <section>
+            <div id="date-wise" class="flex justify-center hidden">
+                <button id="sort-by-date"
+                    class="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 text-slate-200 bg-red-300 font-medium rounded-lg py-2 px-3 capitalize">sort
+                    by date</button>
+            </div>
+            <div id="descending" class="flex justify-center hidden">
+                <button id="descending-btn"
+                    class="transition-colors ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 text-slate-200 bg-red-300 font-medium rounded-lg py-2 px-3 capitalize">Descending</button>
+            </div>
+        </section>
         <section class="mt-10 mb-12 container mx-auto">
             <div id="card-container" class="grid grid-cols-3 gap-4"></div>
+        </section>
+        <section class="mb-8">
+            <div id="see-more-control" class="flex justify-center hidden">
+                <button id="see-more-btn"
+                    class="transition-shadow ease-in-out delay-500 bg-blue-300 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 text-slate-200 bg-red-300 font-medium rounded-lg py-2 px-3 capitalize">See
+                    More
+                </button>
+            </div>
+            <div id="back-defult-control" class="flex justify-center hidden">
+                <button id="back-defult-btn"
+                    class="transition-transform ease-in-out delay-500 bg-blue-300 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 text-slate-200 bg-red-300 font-medium rounded-lg py-2 px-3 capitalize">Back
+                    Defult</button>
+            </div>
         </section>
     </main>
     <!-- universe js link -->

@@ -18,6 +18,7 @@ const updateAndDisplaySortedUniverse = () => {
     // Display the sorted universe
     displayUniverse(allShowUniverse, defultCount);
 };
+
 // Rest of your code remains the same
 const defultCount = 6;
 let allShowUniverse = [];
@@ -61,6 +62,34 @@ const loadData = async () => {
 const displayUniverse = (universe, count) => {
     console.log(universe);
     const cardContainer = document.getElementById('card-container');
+    //data reset
+    cardContainer.innerHTML = '';
+
+    // see more and back defult control
+    const seeMoreControl = document.getElementById('see-more-control');
+    const backDefultControl = document.getElementById('back-defult-control');
+    if (allShowUniverse.length > defultCount) {
+        seeMoreControl.classList.remove('hidden');
+    }
+    else {
+        seeMoreControl.classList.add('hidden');
+    }
+    const seeMoreUniverse = () => displayUniverse(allShowUniverse, allShowUniverse.length);
+    document.getElementById('see-more-btn').addEventListener('click', function () {
+        seeMoreUniverse();
+        //seeMoreControl.classList.add('hidden');
+        //backDefultControl.classList.remove('hidden');
+        backDefultControl.classList.remove('hidden');
+        seeMoreControl.classList.add('hidden');
+    });
+    const backDefultUniverse = () => displayUniverse(allShowUniverse, defultCount);
+    document.getElementById('back-defult-btn').addEventListener('click', function () {
+        backDefultUniverse();
+        // backDefultControl.classList.add('hidden');
+        //seeMoreControl.classList.remove('hidden');
+        backDefultControl.classList.add('hidden');
+    });
+    // end see more and back defult control
 
     for (let i = 0; i < count; i++) {
         if (universe[i]) {
