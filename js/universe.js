@@ -60,7 +60,7 @@ const loadData = async () => {
 };
 
 const displayUniverse = (universe, count) => {
-    console.log(universe);
+    //console.log(universe);
     const cardContainer = document.getElementById('card-container');
     //data reset
     cardContainer.innerHTML = '';
@@ -108,7 +108,7 @@ const displayUniverse = (universe, count) => {
           <span class="block my-6"><hr></span>
      <div class="flex justify-between">
         <h3 class="capitalize text-xl mt-3 font-medium">${universeData.name}</h3>
-        <span class="block flex cursor-pointer relative"><i class="fas fa-arrow-right bg-red-50 text-red-300 p-3 rounded-full absolute top-5 right-3"></i></span>
+        <span onClick="getDetailsUniverseItem('${universeData.id}')" class="block flex cursor-pointer relative"><i class="fas fa-arrow-right bg-red-50 text-red-300 p-3 rounded-full absolute top-5 right-3"></i></span>
       </div>
 
       <div class="my-4 flex text-zinc-400">
@@ -121,5 +121,44 @@ const displayUniverse = (universe, count) => {
         }
     }
 };
+
+//get details by modal
+const getDetailsUniverseItem = async (id) => {
+    try {
+        const idUrl = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+        const res = await fetch(idUrl);
+        if (!res.ok) {
+            throw new Error(`HTTP Error! Status: ${res.status}`);
+        }
+        const data = await res.json();
+        displyUniverseDetails(data.data)
+    }
+    catch (error) {
+        console.error("An error occurred:", error);
+        // You can also handle the error in other ways, such as showing a message to the user:
+        alert("An error occurred while fetching phone details. Please try again later.");
+    }
+};
+
+const displyUniverseDetails = singUnivers => {
+    console.log(singUnivers);
+    const modalUniverse = document.getElementById('universe-modal');
+    modalUniverse.classList.remove('hidden');
+
+
+
+    const detailsInfo = document.getElementById('details-info');
+    const detailsBannar = document.getElementById('details-bannar');
+    detailsInfo.innerHTML = `
+    <p>${singUnivers.description}</p>
+    `;
+    detailsBannar.innerHTML = `
+    <img class="" src="${singUnivers.image_link}" alt="">
+    `;
+    document.getElementById('close-btn').addEventListener('click', function () {
+        modalUniverse.classList.add('hidden');
+    })
+}
+
 
 loadData();

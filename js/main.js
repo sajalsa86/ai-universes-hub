@@ -1,13 +1,16 @@
+// Global variable to track the current sorting order
+let isDescendingOrder = false;
 
 // Sort function to compare two universe objects by date
 const sortByDate = (a, b) => {
     const dateA = new Date(a.published_in);
     const dateB = new Date(b.published_in);
-    return dateA - dateB;
+    return isDescendingOrder ? dateB - dateA : dateA - dateB;
 };
 
 // Function to update and display the sorted universe
 const updateAndDisplaySortedUniverse = () => {
+    isDescendingOrder = !isDescendingOrder; // Toggle sorting order
     allShowUniverse.sort(sortByDate); // Sort the universe array by date
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = ''; // Clear the card container
@@ -16,12 +19,32 @@ const updateAndDisplaySortedUniverse = () => {
     displayUniverse(allShowUniverse, defultCount);
 };
 
-// Event listener for the "sort-by-date" button
-document.getElementById('sort-by-date').addEventListener('click', updateAndDisplaySortedUniverse);
-
 // Rest of your code remains the same
 const defultCount = 6;
 let allShowUniverse = [];
+// control sorted
+const dateWise = document.getElementById('date-wise');
+const descending = document.getElementById('descending');
+if (true) {
+    dateWise.classList.remove('hidden');
+}
+else {
+    dateWise.classList.add('hidden');
+}
+document.getElementById('sort-by-date').addEventListener('click', function () {
+    updateAndDisplaySortedUniverse();
+    dateWise.classList.add('hidden');
+    descending.classList.remove('hidden');
+
+});
+
+document.getElementById('descending-btn').addEventListener('click', function () {
+    updateAndDisplaySortedUniverse();
+    descending.classList.add('hidden');
+    dateWise.classList.remove('hidden');
+
+});
+
 
 const loadData = async () => {
     try {
@@ -37,8 +60,36 @@ const loadData = async () => {
 };
 
 const displayUniverse = (universe, count) => {
-    console.log(universe);
+    //console.log(universe);
     const cardContainer = document.getElementById('card-container');
+    //data reset
+    cardContainer.innerHTML = '';
+
+    // see more and back defult control
+    const seeMoreControl = document.getElementById('see-more-control');
+    const backDefultControl = document.getElementById('back-defult-control');
+    if (allShowUniverse.length > defultCount) {
+        seeMoreControl.classList.remove('hidden');
+    }
+    else {
+        seeMoreControl.classList.add('hidden');
+    }
+    const seeMoreUniverse = () => displayUniverse(allShowUniverse, allShowUniverse.length);
+    document.getElementById('see-more-btn').addEventListener('click', function () {
+        seeMoreUniverse();
+        //seeMoreControl.classList.add('hidden');
+        //backDefultControl.classList.remove('hidden');
+        backDefultControl.classList.remove('hidden');
+        seeMoreControl.classList.add('hidden');
+    });
+    const backDefultUniverse = () => displayUniverse(allShowUniverse, defultCount);
+    document.getElementById('back-defult-btn').addEventListener('click', function () {
+        backDefultUniverse();
+        // backDefultControl.classList.add('hidden');
+        //seeMoreControl.classList.remove('hidden');
+        backDefultControl.classList.add('hidden');
+    });
+    // end see more and back defult control
 
     for (let i = 0; i < count; i++) {
         if (universe[i]) {
@@ -57,7 +108,7 @@ const displayUniverse = (universe, count) => {
           <span class="block my-6"><hr></span>
      <div class="flex justify-between">
         <h3 class="capitalize text-xl mt-3 font-medium">${universeData.name}</h3>
-        <span class="block flex cursor-pointer relative"><i class="fas fa-arrow-right bg-red-50 text-red-300 p-3 rounded-full absolute top-5 right-3"></i></span>
+        <span onClick="getDetailsUniverseItem('${universeData.id}')" class="block flex cursor-pointer relative"><i class="fas fa-arrow-right bg-red-50 text-red-300 p-3 rounded-full absolute top-5 right-3"></i></span>
       </div>
 
       <div class="my-4 flex text-zinc-400">
@@ -70,5 +121,29 @@ const displayUniverse = (universe, count) => {
         }
     }
 };
+
+//get details by modal
+const getDetailsUniverseItem = async (id) => {
+    try {
+        const idUrl = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+        const res = await fetch(idUrl);
+        if (!res.ok) {
+            throw new Error(`HTTP Error! Status: ${res.status}`);
+        }
+        const data = await res.json();
+        displyUniverseDetails(data.data)
+    }
+    catch (error) {
+        console.error("An error occurred:", error);
+        // You can also handle the error in other ways, such as showing a message to the user:
+        alert("An error occurred while fetching phone details. Please try again later.");
+    }
+};
+
+const displyUniverseDetails = singUnivers => {
+    console.log(singUnivers);
+
+}
+
 
 loadData();
