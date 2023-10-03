@@ -1,3 +1,4 @@
+
 // Global variable to track the current sorting order
 let isDescendingOrder = false;
 
@@ -25,6 +26,8 @@ let allShowUniverse = [];
 // control sorted
 const dateWise = document.getElementById('date-wise');
 const descending = document.getElementById('descending');
+const seeMoreControl = document.getElementById('see-more-control');
+//const backDefultControl = document.getElementById('back-defult-control');
 if (true) {
     dateWise.classList.remove('hidden');
 }
@@ -35,16 +38,13 @@ document.getElementById('sort-by-date').addEventListener('click', function () {
     updateAndDisplaySortedUniverse();
     dateWise.classList.add('hidden');
     descending.classList.remove('hidden');
-
 });
 
 document.getElementById('descending-btn').addEventListener('click', function () {
     updateAndDisplaySortedUniverse();
     descending.classList.add('hidden');
     dateWise.classList.remove('hidden');
-
 });
-
 
 const loadData = async () => {
     try {
@@ -73,22 +73,22 @@ const displayUniverse = (universe, count) => {
     }
     else {
         seeMoreControl.classList.add('hidden');
+
     }
     const seeMoreUniverse = () => displayUniverse(allShowUniverse, allShowUniverse.length);
     document.getElementById('see-more-btn').addEventListener('click', function () {
         seeMoreUniverse();
-        //seeMoreControl.classList.add('hidden');
-        //backDefultControl.classList.remove('hidden');
         backDefultControl.classList.remove('hidden');
         seeMoreControl.classList.add('hidden');
     });
+
     const backDefultUniverse = () => displayUniverse(allShowUniverse, defultCount);
     document.getElementById('back-defult-btn').addEventListener('click', function () {
         backDefultUniverse();
-        // backDefultControl.classList.add('hidden');
-        //seeMoreControl.classList.remove('hidden');
+        seeMoreControl.classList.remove('hidden');
         backDefultControl.classList.add('hidden');
     });
+
     // end see more and back defult control
 
     for (let i = 0; i < count; i++) {
@@ -145,16 +145,17 @@ const displyUniverseDetails = singUnivers => {
     const modalUniverse = document.getElementById('universe-modal');
     modalUniverse.classList.remove('hidden');
 
-
-
     const detailsInfo = document.getElementById('details-info');
     const detailsBannar = document.getElementById('details-bannar');
+
     detailsInfo.innerHTML = `
-    <p>${singUnivers.description}</p>
+    <p class="text-left">${singUnivers.description}</p>
+    
     `;
     detailsBannar.innerHTML = `
-    <img class="" src="${singUnivers.image_link}" alt="">
+    <img class="rounded" src="${singUnivers.image_link[0]}" alt="">
     `;
+
     document.getElementById('close-btn').addEventListener('click', function () {
         modalUniverse.classList.add('hidden');
     })
@@ -162,3 +163,4 @@ const displyUniverseDetails = singUnivers => {
 
 
 loadData();
+//

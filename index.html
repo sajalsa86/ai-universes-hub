@@ -46,19 +46,33 @@
         </section>
     </main>
     <!-- Modal -->
-    <section id="universe-modal" class="hidden absolute top-2/4">
+
+    <section id="universe-modal"
+        class="hidden fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50 w-full overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-opacity-60 bg-neutral-800">
         <div id="modal-body"
-            class="flex justify-center items-center gap-3 relative rounded-lg w-2/3 p-24  bg-amber-50 mx-auto">
-            <div id="details-info" class="bg-red-100 border-2 border-red-300 p-3 rounded-xl"></div>
-            <div id="details-bannar" class="bg-gray-100	border-2 border-gray-300 p-3 rounded-xl"></div>
+            class="relative w-full max-w-2xl max-h-full flex justify-center items-center gap-3 p-16 bg-amber-50 rounded-lg">
+            <div class="w-6/12 bg-red-100 border-2 border-red-300 p-3 rounded-xl">
+                <div id="details-info">
+
+                </div>
+
+            </div>
+
+            <div class="w-6/12 bg-gray-100 border-2 border-gray-300 p-3 rounded-xl">
+                <div id="details-bannar">
+
+                </div>
+            </div>
+
             <span id="close-btn"
                 class="text-white bg-red-400 block p-3 rounded-full absolute -right-5 -top-4 flex justify-center items-center"><i
                     class="fas fa-times"></i></span>
         </div>
     </section>
+
     <!-- universe js link -->
     <script src="js/universe.js"></script>
-    <!-- <script src="js/main.js"></script> -->
+
 </body>
 
 </html>
