@@ -150,14 +150,14 @@ const displyUniverseDetails = singUnivers => {
 
     detailsInfo.innerHTML = `
     <p class="text-left">${singUnivers.description}</p>   
-    <div class="grid grid-cols-3 gap-3 mt-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
     <p class="bg-white rounded-lg py-3 px-5 capitalize text-lime-400">${singUnivers.pricing ? singUnivers.pricing[0].price + ' ' + singUnivers.pricing[0].plan : 'free of cost/ basic'}</p>
     <p class="bg-white rounded-lg py-3 px-5 capitalize text-yellow-400">${singUnivers.pricing ? singUnivers.pricing[1].price + ' ' + singUnivers.pricing[1].plan : 'free of cost/ pro'}</p>
     <p class="bg-white rounded-lg py-3 px-5 capitalize text-fuchsia-400">${singUnivers.pricing ? singUnivers.pricing[2].price + ' ' + singUnivers.pricing[2].plan : 'free of cost/ enterprice'}</p>
     </div>
     
-   <div class="flex justify-between">
-  <div>
+   <div class="md:flex justify-between">
+  <div class="md:w-1/2">
    <h3 class="capitalize mt-5 mb-3">features</h3>
     <ul class="text-slate-500 list-disc list-inside">
         <li>${singUnivers.features[1].feature_name}</li>
@@ -165,7 +165,7 @@ const displyUniverseDetails = singUnivers => {
         <li>${singUnivers.features[3].feature_name}</li>
       </ul>
   </div>
-   <div>
+   <div class="md:w-1/2">
    <h3 class="capitalize mt-5 mb-3">integrations</h3>
   <ul class="text-slate-500 list-disc list-inside">
     <li>${singUnivers.integrations && singUnivers.integrations[0] ? singUnivers.integrations[0] : 'No data found'}</li>

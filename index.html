@@ -28,7 +28,7 @@
         </section>
         <!-- card -->
         <section class="mt-10 mb-12 container mx-auto">
-            <div id="card-container" class="grid grid-cols-3 gap-4"></div>
+            <div id="card-container" class="grid grid-cols-1 gap-4 md:grid md:grid-cols-3 md:gap-4"></div>
         </section>
         <!-- see more and back btn -->
         <section class="mb-8">
@@ -47,7 +47,7 @@
     </main>
     <!-- Modal -->
     <!--  -->
-    <section id="universe-modal"
+    <!--  <section id="universe-modal"
         class="hidden fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50 w-full overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-opacity-60 bg-neutral-800">
         <div id="modal-body" class="relative max-h-full max-w-6xl grid grid-cols-2 gap-3 p-16 bg-amber-50 rounded-lg">
             <div class="bg-red-100 border-2 border-red-300 p-3 rounded-xl">
@@ -58,6 +58,28 @@
             </div>
 
             <div class="bg-gray-100 border-2 border-gray-300 p-3 rounded-xl">
+                <div id="details-bannar" class="relative">
+
+                </div>
+            </div>
+
+            <span id="close-btn"
+                class="text-white bg-red-400 block p-3 rounded-full absolute -right-5 -top-4 flex justify-center items-center"><i
+                    class="fas fa-times"></i></span>
+        </div>
+    </section> -->
+    <!-- responsive -->
+    <section id="universe-modal"
+        class="hidden fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50 w-full overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-opacity-60 bg-neutral-800">
+        <div id="modal-body"
+            class="relative max-h-full w-full md:max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-3 p-4 md:p-8 bg-amber-50 rounded-lg">
+            <div class="bg-red-100 border-2 border-red-300 p-3 rounded-xl">
+                <div id="details-info" class="mb-6 md:mb-10">
+
+                </div>
+            </div>
+
+            <div class="bg-gray-100 border-2 border-gray-300 p-3 rounded-xl mt-4 md:mt-0">
                 <div id="details-bannar" class="relative">
 
                 </div>
