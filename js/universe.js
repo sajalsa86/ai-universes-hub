@@ -185,7 +185,8 @@ const displyUniverseDetails = singUnivers => {
     const accuracyControl = document.getElementById('accuracy');
     if (singUnivers.accuracy.score === null) {
         accuracyControl.classList.add('hidden');
-    }
+    };
+
     document.getElementById('close-btn').addEventListener('click', function () {
         modalUniverse.classList.add('hidden');
     })
