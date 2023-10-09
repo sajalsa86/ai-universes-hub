@@ -96,7 +96,7 @@ const displayUniverse = (universe, count) => {
             const universeData = universe[i];
             //console.log(universeData) // 6 universecard show
             const universeCard = document.createElement('div');
-            universeCard.classList.add('p-3', 'rounded', 'border-2', 'shadow-lg');
+            universeCard.classList.add('hover:animate-bounce', 'p-3', 'rounded', 'border-2', 'shadow-lg');
             universeCard.innerHTML = `
           <img class="rounded-lg" src="${universeData.image}" alt="">
           <h3 class="capitalize text-xl my-3.5 font-medium">features</h3>
@@ -108,7 +108,7 @@ const displayUniverse = (universe, count) => {
           <span class="block my-6"><hr></span>
      <div class="flex justify-between">
         <h3 class="capitalize text-xl mt-3 font-medium">${universeData.name}</h3>
-        <span onClick="getDetailsUniverseItem('${universeData.id}')" class="block flex cursor-pointer relative"><i class="fas fa-arrow-right bg-red-50 text-red-300 p-3 rounded-full absolute top-5 right-3"></i></span>
+        <span onClick="getDetailsUniverseItem('${universeData.id}')" class="block flex cursor-pointer relative"><i class="animate-bounce fas fa-arrow-right bg-red-50 text-red-300 p-3 rounded-full absolute top-5 right-3"></i></span>
       </div>
 
       <div class="my-4 flex text-zinc-400">
