@@ -33,18 +33,21 @@ if (true) {
 }
 else {
     dateWise.classList.add('hidden');
-}
-document.getElementById('sort-by-date').addEventListener('click', function () {
+};
+
+function handleSortByDateClick() {
     updateAndDisplaySortedUniverse();
     dateWise.classList.add('hidden');
     descending.classList.remove('hidden');
-});
+};
 
-document.getElementById('descending-btn').addEventListener('click', function () {
+function handleDescendingBtnClick() {
     updateAndDisplaySortedUniverse();
     descending.classList.add('hidden');
     dateWise.classList.remove('hidden');
-});
+};
+document.getElementById('sort-by-date').addEventListener('click', handleSortByDateClick);
+document.getElementById('descending-btn').addEventListener('click', handleDescendingBtnClick);
 
 const loadData = async () => {
     try {
